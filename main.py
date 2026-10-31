@@ -1,6 +1,10 @@
 def add_note():
     note = input("Enter your note: ")
 
+    if not note.strip():
+        print("Error: Note cannot be empty!")
+        return
+
     with open("notes.txt", "a") as file:
         file.write(note + "\n")
 
@@ -11,11 +15,13 @@ def view_notes():
     try:
         with open("notes.txt", "r") as file:
             notes = file.read()
+
             if notes:
                 print("\nYour Notes:")
                 print(notes)
             else:
                 print("No notes available.")
+
     except FileNotFoundError:
         print("No notes found.")
 
