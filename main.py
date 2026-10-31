@@ -1,3 +1,16 @@
+def save_note(note):
+    with open("notes.txt", "a") as file:
+        file.write(note + "\n")
+
+
+def read_notes():
+    try:
+        with open("notes.txt", "r") as file:
+            return file.read()
+    except FileNotFoundError:
+        return ""
+
+
 def add_note():
     note = input("Enter your note: ")
 
@@ -5,25 +18,18 @@ def add_note():
         print("Error: Note cannot be empty!")
         return
 
-    with open("notes.txt", "a") as file:
-        file.write(note + "\n")
-
+    save_note(note)
     print("Note saved successfully!")
 
 
 def view_notes():
-    try:
-        with open("notes.txt", "r") as file:
-            notes = file.read()
+    notes = read_notes()
 
-            if notes:
-                print("\nYour Notes:")
-                print(notes)
-            else:
-                print("No notes available.")
-
-    except FileNotFoundError:
-        print("No notes found.")
+    if notes:
+        print("\nYour Notes:")
+        print(notes)
+    else:
+        print("No notes available.")
 
 
 def main():
