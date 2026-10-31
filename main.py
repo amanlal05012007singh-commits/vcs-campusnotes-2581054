@@ -10,11 +10,35 @@ def add_note():
 def view_notes():
     try:
         with open("notes.txt", "r") as file:
-            print(file.read())
+            notes = file.read()
+            if notes:
+                print("\nYour Notes:")
+                print(notes)
+            else:
+                print("No notes available.")
     except FileNotFoundError:
         print("No notes found.")
 
 
-print("Welcome to CampusNotes!")
-add_note()
-view_notes()
+def main():
+    while True:
+        print("\n--- CampusNotes ---")
+        print("1. Add Note")
+        print("2. View Notes")
+        print("3. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            add_note()
+        elif choice == "2":
+            view_notes()
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice!")
+
+
+if __name__ == "__main__":
+    main()
