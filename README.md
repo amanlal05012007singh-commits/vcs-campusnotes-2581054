@@ -12,3 +12,4 @@ A simple Python-based note-taking application.
 
 ## Author
 Aman Lal Singh
+Updated from second cloned repository.
